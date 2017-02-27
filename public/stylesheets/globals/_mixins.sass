@@ -1,0 +1,8 @@
+// MIXIN BEM (Block Element Modifier)
+=element($element)
+    &__#{$element}
+        @content
+
+=modifier($modifier)
+    &--#{$modifier}
+        @content
