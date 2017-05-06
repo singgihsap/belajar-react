@@ -14,7 +14,17 @@ gulp.task('sass', function () {
     }))
 });
 
+gulp.task('libraries', function () {
+    gulp.src('./public/stylesheets/libraries/*.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest('./public/stylesheets/libraries/'))
+    .pipe(browserSync.reload({
+        stream: true
+    }))
+});
+
 gulp.task('sass:watch', ['browserSync'], function () {
+    gulp.watch('./public/stylesheets/libraries/**/*', ['libraries']);
     gulp.watch('./public/stylesheets/**/*', ['sass']);
     gulp.watch('./public/**/*', browserSync.reload);
 });
@@ -27,4 +37,4 @@ gulp.task('browserSync', function () {
     })
 });
 
-gulp.task('default', ['sass:watch', 'sass']);
+gulp.task('default', ['sass:watch', 'sass', 'libraries']);

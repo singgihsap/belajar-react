@@ -13,6 +13,7 @@ header .navbar {
 
 .content-main {
   padding-top: 30px;
+  padding-bottom: 30px;
   position: relative; }
   .content-main .content__box {
     margin-top: 10px; }
